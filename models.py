@@ -22,7 +22,13 @@ class Menu:
         self.items.append(menu_item)
 
     def filter_by_category(self, category):
-        return [item for item in self.items if item.category == category]
+        return [item for item in self.items if item.category.lower() == category.lower()]
+
+    def sort_by_price(self):
+        return sorted(self.items, key=lambda item: item.price)
+
+    def sort_by_popularity(self):
+        return sorted(self.items, key=lambda item: item.popularity_rating, reverse=True)
 
 class Order:
     def __init__(self):
